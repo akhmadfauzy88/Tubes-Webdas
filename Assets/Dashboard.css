@@ -107,7 +107,33 @@ td{
   font-size: 18px;
 }
 
+.pinjam{
+  line-height: 50px;
+}
+
+.pinjam a{
+  margin: 0 10px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.pinjam a:hover{
+  background: #20c997;
+  transition: 0.3s;
+}
+
+.kelas .form-control{
+  width: 100%;
+  font-size: 20px;
+  padding: 5px;
+}
+
 @media only screen and (max-width: 900px) {
+
+  body{
+    padding: 5px 15px;
+  }
+
   .menu{
     display: block;
     height: auto;
@@ -129,5 +155,20 @@ td{
 
   .menu ul li{
     margin: 0;
+  }
+
+  .filter input{
+    width: 100%;
+  }
+
+  .pinjam {
+    text-align: center;
+  }
+
+  .pinjam a{
+    border: none;
+    margin: 5px auto;
+    display: block;
+    width: 100%;
   }
 }

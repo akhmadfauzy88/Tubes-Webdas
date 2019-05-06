@@ -14,6 +14,23 @@
     $user = htmlspecialchars($_POST['username']);
     $pass = md5(htmlspecialchars($_POST['password']));
 
+    //CEK LAK
+    $query = $sql->prepare("select * from lak where username = ? and password = ?");
+    $query->bind_param('ss', $user, $pass);
+
+    if ($query->execute()) {
+      $hasil = $query->get_result();
+
+      foreach ($hasil as $key => $value) {
+        $_SESSION['id'] = $value['id'];
+        $_SESSION['nama_depan'] = $value['nama_depan'];
+        $_SESSION['email'] = $value['email'];
+        $_SESSION['is_login_peminjaman_lak'] = TRUE;
+      }
+      header("Location: Admin/dashboard.php");
+    }
+    $query->close();
+
     //Cek Mahasiswa
     $query = $sql->prepare("select * from mhs where username = ? and password = ?");
     $query->bind_param('ss', $user, $pass);
@@ -24,6 +41,7 @@
       foreach ($hasil as $key => $value) {
         $_SESSION['id'] = $value['id'];
         $_SESSION['nim'] = $value['nim'];
+        $_SESSION['kelas'] = $value['kelas'];
         $_SESSION['nama_depan'] = $value['nama_depan'];
         $_SESSION['nama_belakang'] = $value['nama_belakang'];
         $_SESSION['email'] = $value['email'];
@@ -49,22 +67,6 @@
         $_SESSION['is_login_peminjaman'] = TRUE;
       }
       header("Location: User/dashboard.php");
-    }
-    $query->close();
-
-    $query = $sql->prepare("select * from lak where username = ? and password = ?");
-    $query->bind_param('ss', $user, $pass);
-
-    if ($query->execute()) {
-      $hasil = $query->get_result();
-
-      foreach ($hasil as $key => $value) {
-        $_SESSION['id'] = $value['id'];
-        $_SESSION['nama_depan'] = $value['nama_depan'];
-        $_SESSION['email'] = $value['email'];
-        $_SESSION['is_login_peminjaman_lak'] = TRUE;
-      }
-      header("Location: Admin/dashboard.php");
     }
     $query->close();
 

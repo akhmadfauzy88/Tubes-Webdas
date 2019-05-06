@@ -45,6 +45,10 @@
           <input type="submit" name="reset" value="RESET">
         </form>
       </div>
+      <div class="pinjam">
+        <a href="kelas.php">[+] Pinjam Ruang Kelas</a>
+        <a href="praktikum.php">[+] Pinjam Ruang Praktikum</a>
+      </div>
     </div>
 
     <div class="konten">

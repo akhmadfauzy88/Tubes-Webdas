@@ -32,7 +32,7 @@
         <?php include 'Template/Header.php'; ?>
     <!-- Disini Batas Template -->
     <div class="konten">
-      <h2>Input Feedback</h2>
+      <h2>History Peminjaman</h2>
       <hr>
       <br>
       <h2>History Peminjaman Ruang Kelas</h2>
