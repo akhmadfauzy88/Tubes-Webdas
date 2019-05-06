@@ -4,6 +4,12 @@
   session_name("Spicy_Chicken_Wings");
   session_start();
 
+  if (isset($_SESSION['is_login_peminjaman'])) {
+    header("Location: User/dashboard.php");
+  }elseif (isset($_SESSION['is_login_peminjaman_lak'])) {
+    header("Location: Admin/dashboard.php");
+  }
+
   if (isset($_POST['login'])) {
     $user = htmlspecialchars($_POST['username']);
     $pass = md5(htmlspecialchars($_POST['password']));
@@ -23,7 +29,7 @@
         $_SESSION['email'] = $value['email'];
         $_SESSION['is_login_peminjaman'] = TRUE;
       }
-
+      header("Location: User/dashboard.php");
     }
     $query->close();
 
@@ -37,15 +43,30 @@
       foreach ($hasil as $key => $value) {
         $_SESSION['id'] = $value['id'];
         $_SESSION['nip'] = $value['nip'];
+        $_SESSION['nama_depan'] = $value['nama_depan'];
         $_SESSION['nama_belakang'] = $value['nama_belakang'];
         $_SESSION['email'] = $value['email'];
         $_SESSION['is_login_peminjaman'] = TRUE;
       }
-
+      header("Location: User/dashboard.php");
     }
     $query->close();
 
-    echo $_SESSION['is_login_peminjaman'];
+    $query = $sql->prepare("select * from lak where username = ? and password = ?");
+    $query->bind_param('ss', $user, $pass);
+
+    if ($query->execute()) {
+      $hasil = $query->get_result();
+
+      foreach ($hasil as $key => $value) {
+        $_SESSION['id'] = $value['id'];
+        $_SESSION['nama_depan'] = $value['nama_depan'];
+        $_SESSION['email'] = $value['email'];
+        $_SESSION['is_login_peminjaman_lak'] = TRUE;
+      }
+      header("Location: Admin/dashboard.php");
+    }
+    $query->close();
 
   }
 

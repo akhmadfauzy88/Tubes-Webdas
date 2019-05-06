@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+*{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  font-family: Roboto;
+  padding: 15px 50px;
+}
+
+.menu{
+  height: 50px;
+  background: green;
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand{
+  line-height: 50px;
+  padding: 0 20px;
+  font-size: 20px;
+}
+
+.item-menu{
+  padding: 0 20px;
+}
+
+.menu ul{
+  line-height: 50px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li{
+  margin: 0 5px;
+  list-style: none;
+}
+
+.menu ul li a{
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  height: 100%;
+  padding: 0 10px;
+  transition: 0.3s;
+}
+
+.menu ul li a:hover{
+  background: #20c997;
+  transition: 0.3s;
+}
