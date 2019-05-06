@@ -13,7 +13,7 @@ body, html{
 }
 
 .background{
-  background: url("Img/Background_Login.jpg");
+  background: url("Img/20190506_101411670_iOS.jpg");
   /* background-size: 100%; */
   height: 100%;
   background-position: center;
@@ -41,7 +41,7 @@ h2{
   width: 40%;
   padding: 10% 20px;
   height: 100%;
-  border: 3px solid grey;
+  /* border: 3px solid grey; */
   background: rgba(255, 255, 255, 0.6);
   vertical-align: middle;
 }
