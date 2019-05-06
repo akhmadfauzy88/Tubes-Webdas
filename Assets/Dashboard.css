@@ -12,11 +12,46 @@ body{
   padding: 15px 50px;
 }
 
+h2{
+  margin: 0;
+  padding: 0;
+}
+
+td{
+  padding: 15px;
+  text-align: center;
+}
+
 .menu{
   height: 50px;
   background: green;
   display: flex;
   justify-content: space-between;
+}
+
+.filter{
+  line-height: 50px;
+  padding: 0 20px;
+}
+
+.filter input{
+  font-size: 17px;
+  margin: 0;
+}
+
+.filter input[type='date']{
+  border: none;
+  background: none;
+  border-bottom: 1px solid white;
+  text-align: center;
+  outline: none;
+}
+
+.filter input[type='submit']{
+  border: 1px solid white;
+  background: none;
+  color: white;
+  padding: 3px;
 }
 
 .brand{
@@ -53,4 +88,46 @@ body{
 .menu ul li a:hover{
   background: #20c997;
   transition: 0.3s;
+}
+
+.konten{
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid green;
+}
+
+.feed input, .feed textarea, .feed select{
+  width: 100%;
+  font-size: 20px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.feed label{
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 900px) {
+  .menu{
+    display: block;
+    height: auto;
+  }
+  .brand{
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .item-menu{
+    padding: 0;
+  }
+
+  .menu ul{
+    display: block;
+    text-align: center;
+  }
+
+  .menu ul li{
+    margin: 0;
+  }
 }
