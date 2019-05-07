@@ -32,7 +32,7 @@
 
     $q->execute();
 
-    $q = "select * from transaksi";
+    $q = "select * from transaksi order by id DESC limit 1";
     $fff = $sql->query($q);
     foreach ($fff as $key => $value) {
       $idk = $value['id'];
