@@ -10,10 +10,10 @@
 
   $idx = $_SESSION['id'];
 
-  $query = "select *, dosen.kode as kdosen from transaksi join dosen on transaksi.kode_dosen = dosen.id join laboratory on transaksi.ruangan = laboratory.id where (status = 'attended' OR status = 'canceled') AND keterangan = 'kelas' AND peminjam = $idx";
+  $query = "select *, dosen.kode as kdosen from transaksi join dosen on transaksi.kode_dosen = dosen.id join laboratory on transaksi.ruangan = laboratory.id where (status = 'attended' OR status = 'canceled' or status = 'declined') AND keterangan = 'kelas' AND peminjam = $idx";
   $transaksi = $sql->query($query);
 
-  $query = "select *, dosen.kode as kdosen from transaksi join dosen on transaksi.kode_dosen = dosen.id join laboratory on transaksi.ruangan = laboratory.id where (status = 'attended' OR status = 'canceled') AND keterangan = 'praktikum' AND peminjam = $idx";
+  $query = "select *, dosen.kode as kdosen from transaksi join dosen on transaksi.kode_dosen = dosen.id join laboratory on transaksi.ruangan = laboratory.id where (status = 'attended' OR status = 'canceled' or status = 'declined') AND keterangan = 'praktikum' AND peminjam = $idx";
   $transaksi_praktikum = $sql->query($query);
 
   $sql->close();

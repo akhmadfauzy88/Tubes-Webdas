@@ -18,6 +18,44 @@
   $query = "SELECT pesan.id as idnm, pesan, mhs.email as email, laboratory.kode as koda FROM pesan JOIN mhs ON pesan.user = mhs.id JOIN laboratory ON pesan.subject = laboratory.id";
   $pesan = $sql->query($query);
 
+  if (isset($_GET['terima'])) {
+    $idn = $_GET['id'];
+
+    $query = "Update transaksi SET status = 'approved' WHERE id = ?";
+    $q = $sql->prepare($query);
+
+    $q->bind_param("s", $idn);
+
+    $q->execute();
+
+    $query = "Update penjadwalan SET status = 'approved' WHERE idx = ?";
+    $q = $sql->prepare($query);
+
+    $q->bind_param("s", $idn);
+
+    $q->execute();
+    header("Location: dashboard.php");
+  }
+
+  if (isset($_GET['tolak'])) {
+    $idn = $_GET['id'];
+
+    $query = "Update transaksi SET status = 'declined' WHERE id = ?";
+    $q = $sql->prepare($query);
+
+    $q->bind_param("s", $idn);
+
+    $q->execute();
+
+    $query = "Update penjadwalan SET status = 'declined' WHERE idx = ?";
+    $q = $sql->prepare($query);
+
+    $q->bind_param("s", $idn);
+
+    $q->execute();
+    header("Location: dashboard.php");
+  }
+
   $sql->close();
 
 ?>
@@ -61,6 +99,45 @@
                 <td><?php echo $val['matakuliah']; ?></td>
                 <td><?php echo $val['kdosen']; ?></td>
                 <td><?php echo $val['tanggal']; ?></td>
+                <td><?php echo $val['status']; ?></td>
+                <td>
+                  <a href="?terima=TRUE&id=<?php echo $val['t_id'] ?>">Terima</a>
+                  <a href="?tolak=TRUE&id=<?php echo $val['t_id'] ?>">Tolak</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <h2>Peminjaman Ruang Praktikum</h2>
+      <div style="overflow:auto">
+        <table border="1" width=100%>
+          <thead>
+            <tr>
+              <th>Ruangan</th>
+              <th>Jam Masuk</th>
+              <th>Jumlah Jam</th>
+              <th>Mata Kuliah</th>
+              <th>Kode Dosen</th>
+              <th>Tanggal</th>
+              <th>Kebutuhan</th>
+              <th>Bukti Peminjaman</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($transaksi_praktikum as $val): ?>
+              <tr>
+                <td><?php echo $val['ruang']; ?></td>
+                <td><?php echo $val['jam_masuk']; ?></td>
+                <td><?php echo $val['jumlah_jam']; ?></td>
+                <td><?php echo $val['matakuliah']; ?></td>
+                <td><?php echo $val['kdosen']; ?></td>
+                <td><?php echo $val['tanggal']; ?></td>
+                <td><?php echo $val['kebutuhan']; ?></td>
+                <td><?php echo $val['bukti']; ?></td>
                 <td><?php echo $val['status']; ?></td>
                 <td>
                   <a href="?terima=TRUE&id=<?php echo $val['t_id'] ?>">Terima</a>

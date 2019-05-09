@@ -8,7 +8,7 @@
     header("Location: ../index.php");
   }
 
-  $query = "select * from penjadwalan join laboratory on penjadwalan.ruang = laboratory.id join kelas on penjadwalan.kelas = kelas.id WHERE penjadwalan.status != 'canceled'";
+  $query = "select * from penjadwalan join laboratory on penjadwalan.ruang = laboratory.id join kelas on penjadwalan.kelas = kelas.id WHERE penjadwalan.status != 'canceled' and penjadwalan.status != 'declined'";
   $transaksi = $sql->query($query);
 
   if (isset($_GET['reset'])) {

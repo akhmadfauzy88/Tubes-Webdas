@@ -88,7 +88,7 @@
         <div class="row">
           <div class="form" style="height:100%;padding:10% 0px;">
             <h2>LOGIN FORM</h2>
-            <form action="" method="post" onsubmit="return front_defense();">
+            <form action="" method="post" onsubmit="return front_defense()" >
               <input type="text" name="username" id="user" placeholder="Username" required />
               <input type="password" name="password" id="pass" placeholder="Password" required />
               <input type="submit" name="login" value="LOGIN" />
