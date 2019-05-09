@@ -10,6 +10,10 @@
         CONTROL PANEL PEMINJAMAN RUANGAN FIT
       </div>
       <div class="item-menu">
-
+        <ul>
+          <li>
+            <a href="?logout=TRUE">Logout</a>
+          </li>
+        </ul>
       </div>
     </div>
